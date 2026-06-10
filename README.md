@@ -12,8 +12,8 @@ Files:
 Purpose:
 These datasets are used for:
 
-Marketing attribution modeling
-Customer journey analysis
-ROI calculation
-CAC analysis
+Marketing attribution modeling,
+Customer journey analysis,
+ROI calculation,
+CAC analysis,
 Dashboard KPI generation
