@@ -46,6 +46,3 @@ This project focuses on analyzing marketing campaign performance across multiple
 ---
 ## Status
 Project is currently in progress — dataset has been collected and uploaded to GitHub. Analysis and dashboard development are ongoing.
-
----
-## Project Structure # Multi-Touch-Marketing-Attribution-ROI-Dashboard
