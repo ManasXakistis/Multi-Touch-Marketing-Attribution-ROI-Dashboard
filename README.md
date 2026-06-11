@@ -1,19 +1,45 @@
-# Multi-Touch-Marketing-Attribution-ROI-Dashboard
-This folder contains raw data for the Multi-Touch Marketing Attribution & ROI Dashboard project.
+Multi-Touch Marketing Attribution & ROI Dashboard
 
-Files:
-1.ad_spend.csv: Advertising spend data.
-  Key Fields: date, channel, campaign_id, spend
-2.crm_conversions.csv: CRM conversion and customer acquisition records.
-  Key Fields: customer_id, conversion_date, revenue, acquisition_channel
-3.web_analytics.csv: Website interaction metrics.
-  Key Fields: session_id, customer_id, traffic_source, page_views, session_duration
+## Overview
 
-Purpose:
-These datasets are used for:
+This project analyzes marketing campaign and advertising performance data to understand which channels and platforms drive the best returns. It focuses on attribution modeling, ROI analysis, CAC calculation, and dashboard-based decision-making for marketing budget optimization.
 
-Marketing attribution modeling,
-Customer journey analysis,
-ROI calculation,
-CAC analysis,
-Dashboard KPI generation
+Traditional last-click attribution can misrepresent the value of earlier customer touchpoints. This project compares First-Touch, Last-Touch, and Linear Attribution models to provide a more balanced view of marketing performance.
+
+## Datasets Used
+
+1. Marketing Campaign Performance Dataset
+
+Used for campaign-level performance, funnel tracking, ROI, CAC, and revenue analysis.
+
+Key columns:
+
+- `CampaignID`
+- `StartDate`
+- `EndDate`
+- `Channel`
+- `Impressions`
+- `Clicks`
+- `Leads`
+- `Conversions`
+- `Cost_USD`
+- `Revenue_USD`
+- `ROI`
+
+2. Global Ads Performance Dataset
+
+Used for platform, country, industry, campaign type, CTR, CPC, and ad spend analysis.
+
+Key columns:
+
+- `date`
+- `platform`
+- `campaign_type`
+- `industry`
+- `country`
+- `impressions`
+- `clicks`
+- `CTR`
+- `CPC`
+- `ad_spend`
+
