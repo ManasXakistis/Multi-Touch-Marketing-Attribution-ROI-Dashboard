@@ -1,0 +1,22 @@
+What is Week 3 actually about -
+(1) calculate some business metrics 
+(2) organize data in a specific structured way.
+________________________________________
+Part 1: The KPIs (Key Performance Indicators)
+KPIs are just numbers that tell a business how well it's performing. Think of them as a "report card." Here are the four you need to calculate:
+
+Total Spend — Simply how much money was spent on ads in total.
+CPC (Cost Per Click) — If you spent ₹1000 on ads and 200 people clicked, your CPC = ₹1000 ÷ 200 = ₹5. It tells you how expensive each click was.
+
+CAC (Customer Acquisition Cost) — How much money was spent to get one paying customer. If ₹10,000 was spent and 50 people bought something → CAC = ₹200.
+
+ROAS (Return On Ad Spend) — For every ₹1 spent on ads, how much revenue came back? If you spent ₹1000 and earned ₹4000 → ROAS = 4x. Higher is better.
+________________________________________
+Part 2: Star Schema (Data Modeling)
+This is how you organize the data in a database. Here's a diagram to make it intuitive: The Fact table sits in the center — it holds all the numbers (spend, clicks, revenue). The surrounding Dimension tables hold descriptive context (who, when, where, which campaign). Together they form a star shape — hence the name.
+________________________________________
+Your action plan:
+Step 1 — Get the raw data (usually a CSV or spreadsheet with ad spend records).
+Step 2 — Calculate the four KPIs using simple formulas in Python (pandas) or Excel.
+Step 3 — Split the data into a Fact table and Dimension tables (this is called data modeling).
+Step 4 — The result should be ready to plug into BI tools like Power BI or Tableau so non-technical people can view dashboards.
