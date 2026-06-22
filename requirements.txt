@@ -1,0 +1,13 @@
+# Data Analysis Libraries
+pandas
+numpy
+s
+# Data Visualization
+matplotlib
+seaborn
+
+# Excel file support
+openpyxl
+
+# Machine Learning (optional for future analysis)
+scikit-learn
