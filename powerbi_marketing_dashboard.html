@@ -1,0 +1,160 @@
+
+<h2 class="sr-only">Marketing Campaign Performance Dashboard — FY 2025, showing KPIs, channel breakdown, monthly trends, and ROAS by channel.</h2>
+
+<style>
+  .db-wrap { font-family: var(--font-sans); padding: 0 0 2rem; color: var(--text-primary); }
+  .db-header { display: flex; justify-content: space-between; align-items: center; padding: 1rem 0 1.25rem; border-bottom: 0.5px solid var(--border); margin-bottom: 1.25rem; }
+  .db-title { font-size: 17px; font-weight: 500; }
+  .db-sub { font-size: 12px; color: var(--text-muted); margin-top: 2px; }
+  .db-badge { font-size: 11px; padding: 3px 10px; border-radius: 20px; background: var(--bg-success); color: var(--text-success); font-weight: 500; }
+  .kpi-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; margin-bottom: 1.25rem; }
+  .kpi { background: var(--surface-1); border-radius: var(--radius); padding: 14px 16px; }
+  .kpi-label { font-size: 11px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.04em; margin-bottom: 6px; }
+  .kpi-val { font-size: 22px; font-weight: 500; line-height: 1.1; }
+  .kpi-delta { font-size: 11px; margin-top: 5px; color: var(--text-muted); }
+  .kpi-delta.pos { color: var(--text-success); }
+  .kpi-delta.neg { color: var(--text-danger); }
+  .charts-row { display: grid; grid-template-columns: minmax(0,1.5fr) minmax(0,1fr); gap: 10px; margin-bottom: 10px; }
+  .chart-card { background: var(--surface-1); border-radius: var(--radius); padding: 16px; }
+  .card-title { font-size: 12px; font-weight: 500; color: var(--text-secondary); margin-bottom: 14px; text-transform: uppercase; letter-spacing: 0.05em; }
+  .charts-row2 { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 10px; }
+  .legend { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 10px; }
+  .leg-item { display: flex; align-items: center; gap: 5px; font-size: 11px; color: var(--text-secondary); }
+  .leg-sq { width: 9px; height: 9px; border-radius: 2px; flex-shrink: 0; }
+  .channel-table { width: 100%; border-collapse: collapse; font-size: 12px; }
+  .channel-table th { text-align: left; color: var(--text-muted); font-weight: 400; padding: 4px 0 8px; border-bottom: 0.5px solid var(--border); font-size: 11px; }
+  .channel-table td { padding: 7px 0; border-bottom: 0.5px solid var(--border); color: var(--text-primary); }
+  .channel-table tr:last-child td { border-bottom: none; }
+  .dot { width: 8px; height: 8px; border-radius: 50%; display: inline-block; margin-right: 6px; flex-shrink: 0; }
+  .bar-bg { background: var(--border); border-radius: 2px; height: 5px; margin-top: 4px; }
+  .bar-fill { height: 5px; border-radius: 2px; }
+</style>
+
+<div class="db-wrap">
+  <div class="db-header">
+    <div>
+      <div class="db-title">Marketing Campaign Performance</div>
+      <div class="db-sub">FY 2025 · All Channels · 10,000 Campaigns</div>
+    </div>
+    <span class="db-badge">● Live</span>
+  </div>
+
+  <div class="kpi-grid">
+    <div class="kpi">
+      <div class="kpi-label">Total Spend</div>
+      <div class="kpi-val">$25.5M</div>
+      <div class="kpi-delta pos">↑ 5 channels active</div>
+    </div>
+    <div class="kpi">
+      <div class="kpi-label">Total Revenue</div>
+      <div class="kpi-val">$51.0M</div>
+      <div class="kpi-delta pos">↑ 2.0× ROAS</div>
+    </div>
+    <div class="kpi">
+      <div class="kpi-label">Cost per Click</div>
+      <div class="kpi-val">$0.31</div>
+      <div class="kpi-delta">83.4M total clicks</div>
+    </div>
+    <div class="kpi">
+      <div class="kpi-label">CAC</div>
+      <div class="kpi-val">$2.53</div>
+      <div class="kpi-delta">10.1M conversions</div>
+    </div>
+  </div>
+
+  <div class="charts-row">
+    <div class="chart-card">
+      <div class="card-title">Monthly spend vs revenue</div>
+      <div class="legend">
+        <span class="leg-item"><span class="leg-sq" style="background:#2a78d6"></span>Spend</span>
+        <span class="leg-item"><span class="leg-sq" style="background:#1baf7a"></span>Revenue</span>
+      </div>
+      <div style="position:relative;height:180px;"><canvas id="monthlyChart" role="img" aria-label="Monthly spend vs revenue bar chart for FY 2025"></canvas></div>
+    </div>
+    <div class="chart-card">
+      <div class="card-title">Spend by channel</div>
+      <div style="position:relative;height:210px;"><canvas id="donutChart" role="img" aria-label="Donut chart showing spend distribution across 5 channels"></canvas></div>
+    </div>
+  </div>
+
+  <div class="charts-row2">
+    <div class="chart-card" style="grid-column: span 2;">
+      <div class="card-title">ROAS by channel</div>
+      <div style="position:relative;height:130px;"><canvas id="roasChart" role="img" aria-label="Horizontal bar chart showing ROAS for each channel"></canvas></div>
+    </div>
+    <div class="chart-card">
+      <div class="card-title">Channel breakdown</div>
+      <table class="channel-table">
+        <thead><tr><th>Channel</th><th style="text-align:right">CPC</th><th style="text-align:right">CAC</th></tr></thead>
+        <tbody>
+          <tr><td><span class="dot" style="background:#2a78d6"></span>Display</td><td style="text-align:right">$0.32</td><td style="text-align:right">$2.60</td></tr>
+          <tr><td><span class="dot" style="background:#1baf7a"></span>Email</td><td style="text-align:right">$0.30</td><td style="text-align:right">$2.44</td></tr>
+          <tr><td><span class="dot" style="background:#eda100"></span>Influencer</td><td style="text-align:right">$0.30</td><td style="text-align:right">$2.51</td></tr>
+          <tr><td><span class="dot" style="background:#4a3aa7"></span>Search</td><td style="text-align:right">$0.31</td><td style="text-align:right">$2.52</td></tr>
+          <tr><td><span class="dot" style="background:#e34948"></span>Social</td><td style="text-align:right">$0.31</td><td style="text-align:right">$2.56</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
+<script>
+const months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+const spend = [2121,1959,2164,2270,2251,2086,2139,2186,1994,2146,2131,2077];
+const rev = [4322,3917,4355,4584,4533,4081,4239,4390,3960,4363,4173,4109];
+
+const isDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+const gridColor = isDark ? '#2c2c2a' : '#e1e0d9';
+const tickColor = isDark ? '#898781' : '#898781';
+
+new Chart(document.getElementById('monthlyChart'), {
+  type: 'bar',
+  data: {
+    labels: months,
+    datasets: [
+      { label: 'Spend ($K)', data: spend, backgroundColor: '#2a78d6', borderRadius: 3, borderSkipped: false },
+      { label: 'Revenue ($K)', data: rev, backgroundColor: '#1baf7a', borderRadius: 3, borderSkipped: false }
+    ]
+  },
+  options: {
+    responsive: true, maintainAspectRatio: false,
+    plugins: { legend: { display: false }, tooltip: { callbacks: { label: ctx => `$${ctx.parsed.y.toLocaleString()}K` } } },
+    scales: {
+      x: { ticks: { color: tickColor, font: { size: 10 } }, grid: { display: false }, border: { color: gridColor } },
+      y: { ticks: { color: tickColor, font: { size: 10 }, callback: v => `$${v/1000}M` }, grid: { color: gridColor }, border: { display: false } }
+    }
+  }
+});
+
+new Chart(document.getElementById('donutChart'), {
+  type: 'doughnut',
+  data: {
+    labels: ['Display','Email','Influencer','Search','Social'],
+    datasets: [{ data: [5343, 5065, 5279, 4917, 4920], backgroundColor: ['#2a78d6','#1baf7a','#eda100','#4a3aa7','#e34948'], borderWidth: 2, borderColor: isDark ? '#1a1a19' : '#fcfcfb' }]
+  },
+  options: {
+    responsive: true, maintainAspectRatio: false, cutout: '65%',
+    plugins: {
+      legend: { position: 'bottom', labels: { color: tickColor, font: { size: 10 }, boxWidth: 9, padding: 10 } },
+      tooltip: { callbacks: { label: ctx => `${ctx.label}: $${(ctx.parsed/1000).toFixed(1)}M` } }
+    }
+  }
+});
+
+new Chart(document.getElementById('roasChart'), {
+  type: 'bar',
+  data: {
+    labels: ['Search','Display','Email','Influencer','Social'],
+    datasets: [{ data: [2.01, 2.01, 2.00, 2.00, 1.98], backgroundColor: ['#2a78d6','#1baf7a','#eda100','#4a3aa7','#e34948'], borderRadius: 3 }]
+  },
+  options: {
+    indexAxis: 'y', responsive: true, maintainAspectRatio: false,
+    plugins: { legend: { display: false }, tooltip: { callbacks: { label: ctx => `ROAS: ${ctx.parsed.x.toFixed(2)}×` } } },
+    scales: {
+      x: { min: 1.9, max: 2.1, ticks: { color: tickColor, font: { size: 10 }, callback: v => v.toFixed(2)+'×' }, grid: { color: gridColor }, border: { display: false } },
+      y: { ticks: { color: tickColor, font: { size: 10 } }, grid: { display: false }, border: { color: gridColor } }
+    }
+  }
+});
+</script>
