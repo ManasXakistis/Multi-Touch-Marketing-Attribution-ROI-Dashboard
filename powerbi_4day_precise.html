@@ -1,0 +1,84 @@
+
+<style>
+  body{font-family:var(--font-sans)}
+  .wrap{padding:1rem 0}
+  .day{border:0.5px solid var(--border);border-radius:12px;margin-bottom:12px;overflow:hidden}
+  .dh{display:flex;align-items:center;gap:10px;padding:10px 16px;border-bottom:0.5px solid var(--border);background:var(--surface-1)}
+  .badge{font-size:11px;font-weight:500;padding:2px 9px;border-radius:99px;white-space:nowrap}
+  .dtitle{font-size:14px;font-weight:500;color:var(--text-primary)}
+  .dfocus{font-size:12px;color:var(--text-muted);margin-left:auto}
+  .tasks{padding:10px 16px;display:flex;flex-direction:column;gap:4px}
+  .task{display:flex;align-items:baseline;gap:8px;padding:5px 0;border-bottom:0.5px solid var(--border)}
+  .task:last-child{border-bottom:none}
+  .tnum{font-size:11px;font-weight:500;color:var(--text-muted);min-width:16px}
+  .ttext{font-size:13px;color:var(--text-primary);line-height:1.5}
+  .ttext code{font-size:11px;background:var(--surface-1);border:0.5px solid var(--border);border-radius:4px;padding:1px 5px;font-family:var(--font-mono)}
+  .output{margin:0 16px 12px;padding:6px 10px;border-radius:var(--radius);font-size:12px;font-weight:500;display:flex;align-items:center;gap:6px}
+</style>
+<div class="wrap">
+
+<div class="day">
+  <div class="dh">
+    <span class="badge" style="background:#E6F1FB;color:#0C447C;border:0.5px solid #B5D4F4">Day 1</span>
+    <span class="dtitle">Data connection and model setup</span>
+    <span class="dfocus">Power Query + DAX</span>
+  </div>
+  <div class="tasks">
+    <div class="task"><span class="tnum">1</span><span class="ttext">Get Data → Text/CSV → load <code>marketing_campaign_performance_10000.csv</code> (10,000 rows, 11 columns)</span></div>
+    <div class="task"><span class="tnum">2</span><span class="ttext">In Power Query: change <code>StartDate</code> and <code>EndDate</code> to Date type (format DD-MM-YYYY); add custom column <code>Duration = EndDate − StartDate</code></span></div>
+    <div class="task"><span class="tnum">3</span><span class="ttext">Set <code>Channel</code> as a dimension and all numeric columns (Impressions, Clicks, Leads, Conversions, Cost_USD, Revenue_USD, ROI) as measures</span></div>
+    <div class="task"><span class="tnum">4</span><span class="ttext">Create 5 DAX measures: <code>CTR = Clicks/Impressions</code> · <code>Lead Rate = Leads/Clicks</code> · <code>Conv Rate = Conversions/Leads</code> · <code>CPA = Cost_USD/Conversions</code> · <code>Avg ROI = AVERAGE(ROI)</code></span></div>
+    <div class="task"><span class="tnum">5</span><span class="ttext">Add a <code>Month</code> column from StartDate for timeline slicing</span></div>
+  </div>
+  <div class="output" style="background:#E6F1FB;color:#0C447C"><i class="ti ti-check" aria-hidden="true"></i>Output: clean model with 5 measures ready for visuals</div>
+</div>
+
+<div class="day">
+  <div class="dh">
+    <span class="badge" style="background:#E1F5EE;color:#085041;border:0.5px solid #9FE1CB">Day 2</span>
+    <span class="dtitle">Conversion funnel page</span>
+    <span class="dfocus">Page 1 of report</span>
+  </div>
+  <div class="tasks">
+    <div class="task"><span class="tnum">1</span><span class="ttext">Insert Funnel visual → fields: Impressions → Clicks → Leads → Conversions (in that order, category = stage name)</span></div>
+    <div class="task"><span class="tnum">2</span><span class="ttext">Add Channel slicer (multi-select) so users can filter funnel per channel (Search, Social, Email, Display, Influencer)</span></div>
+    <div class="task"><span class="tnum">3</span><span class="ttext">Add 3 KPI cards beside funnel: <code>CTR</code>, <code>Lead Rate</code>, <code>Conv Rate</code> — apply conditional formatting (red below average, green above)</span></div>
+    <div class="task"><span class="tnum">4</span><span class="ttext">Insert Line chart: X = Month, Y = Conversions, legend = Channel — to visualise seasonality across 2025</span></div>
+    <div class="task"><span class="tnum">5</span><span class="ttext">Add Date range slicer (StartDate) and sync it to all future pages via View → Sync Slicers</span></div>
+  </div>
+  <div class="output" style="background:#E1F5EE;color:#085041"><i class="ti ti-check" aria-hidden="true"></i>Output: Page 1 — interactive funnel with channel and date filters</div>
+</div>
+
+<div class="day">
+  <div class="dh">
+    <span class="badge" style="background:#FAEEDA;color:#633806;border:0.5px solid #FAC775">Day 3</span>
+    <span class="dtitle">ROI scatter and channel comparison</span>
+    <span class="dfocus">Page 2 of report</span>
+  </div>
+  <div class="tasks">
+    <div class="task"><span class="tnum">1</span><span class="ttext">Insert Scatter chart: X = <code>Cost_USD</code>, Y = <code>Revenue_USD</code>, size = <code>Conversions</code>, legend = Channel, tooltip = <code>ROI</code> + <code>CampaignID</code></span></div>
+    <div class="task"><span class="tnum">2</span><span class="ttext">Add a constant line at Y = X (break-even) so campaigns above the line are immediately visible as profitable</span></div>
+    <div class="task"><span class="tnum">3</span><span class="ttext">Insert Clustered Bar chart: X = Channel, bars = Total Cost vs Total Revenue; add <code>Avg ROI</code> on secondary Y-axis as a line</span></div>
+    <div class="task"><span class="tnum">4</span><span class="ttext">Apply data bar conditional formatting on the bar chart's ROI values (green = high, red = low)</span></div>
+    <div class="task"><span class="tnum">5</span><span class="ttext">Sync Channel and Date slicers from Page 1 to this page via View → Sync Slicers</span></div>
+  </div>
+  <div class="output" style="background:#FAEEDA;color:#633806"><i class="ti ti-check" aria-hidden="true"></i>Output: Page 2 — ROI scatter plot and channel bar chart</div>
+</div>
+
+<div class="day">
+  <div class="dh">
+    <span class="badge" style="background:#FAECE7;color:#4A1B0C;border:0.5px solid #F0997B">Day 4</span>
+    <span class="dtitle">Executive summary and publish</span>
+    <span class="dfocus">Page 3 + deployment</span>
+  </div>
+  <div class="tasks">
+    <div class="task"><span class="tnum">1</span><span class="ttext">Create Page 3 with 6 KPI cards: Total Spend · Total Revenue · Overall ROI · Top Channel by ROI · Lowest CPA Channel · Best Conv Rate Channel</span></div>
+    <div class="task"><span class="tnum">2</span><span class="ttext">Insert Smart Narrative visual — it auto-generates text highlights from the data (e.g. best/worst channel, spend vs revenue gap)</span></div>
+    <div class="task"><span class="tnum">3</span><span class="ttext">Add a manual text box with 3 actionable recommendations derived from the data (e.g. "Reallocate Social budget — ROI 0.10 vs Influencer 1.86")</span></div>
+    <div class="task"><span class="tnum">4</span><span class="ttext">File → Publish to Power BI Service → select workspace → set scheduled data refresh if source is live</span></div>
+    <div class="task"><span class="tnum">5</span><span class="ttext">Export → PDF for stakeholders without Power BI access; share report link with view-only permissions</span></div>
+  </div>
+  <div class="output" style="background:#FAECE7;color:#4A1B0C"><i class="ti ti-check" aria-hidden="true"></i>Output: Page 3 executive page + published report + PDF export</div>
+</div>
+
+</div>
