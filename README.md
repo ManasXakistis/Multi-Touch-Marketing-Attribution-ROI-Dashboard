@@ -44,13 +44,4 @@ campaigns drive the strongest results.
 In progress. Datasets are collected and version-controlled in this
 repository. EDA, SQL aggregation, and attribution modeling are complete;
 Power BI dashboard development is ongoing.
-- ROI calculation
-- Data visualization dashboards
 
----Status
-
-In progress. Datasets are collected and version-controlled in this
-repository. EDA, SQL aggregation, and attribution modeling are complete;
-Power BI dashboard development is ongoing.
-## Status
-Project is currently in progress — dataset has been collected and uploaded to GitHub. Analysis and dashboard development are ongoing.
