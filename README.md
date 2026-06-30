@@ -1,48 +1,56 @@
 # Multi-Touch Marketing Attribution & ROI Dashboard
 
-## Project Overview
-This project focuses on analyzing marketing campaign performance across multiple channels and building insights for Multi-Touch Attribution and ROI evaluation. The goal is to understand how different marketing channels contribute to conversions and overall campaign effectiveness.
+## Overview
 
----
+This project analyzes marketing campaign performance across multiple channels
+to evaluate Multi-Touch Attribution and Return on Investment (ROI). It
+identifies how different channels contribute to conversions and which
+campaigns drive the strongest results.
 
-## Datasets Used
+## Datasets
 
-### 1. Marketing Campaign Performance Dataset
-- File: `marketing_campaign_performance_10000.csv`
-- Contains detailed campaign-level data including impressions, clicks, conversions, and cost.
-
-### 2. Global Ads Performance Dataset (Selected Columns)
-- File: `global_ads_performance_dataset-selected-columns.csv`
-- Contains simplified ad performance metrics across different platforms and channels.
-
----
+| Dataset | File | Description |
+|---|---|---|
+| Marketing Campaign Performance | `marketing_campaign_performance_10000.csv` | Campaign-level data including impressions, clicks, conversions, and cost |
+| Global Ads Performance (Selected Columns) | `global_ads_performance_dataset-selected-columns.csv` | Simplified ad performance metrics across platforms and channels |
 
 ## Objectives
+
 - Analyze marketing campaign performance
-- Understand channel-wise contribution to conversions
-- Calculate ROI (Return on Investment)
+- Measure channel-wise contribution to conversions
+- Calculate ROI across campaigns and channels
 - Identify high-performing campaigns and platforms
 - Support data-driven marketing decisions
 
----
-
 ## Tools & Technologies
-- Python
-- Pandas
-- NumPy
+
+- Python (Pandas, NumPy)
 - Matplotlib / Seaborn
 - Jupyter Notebook
+- SQL
+- Power BI
 
----
+## Approach
 
-## Planned Analysis
-- Data cleaning and preprocessing
-- Exploratory Data Analysis (EDA)
-- Campaign performance comparison
-- Channel attribution analysis
+1. Data cleaning and preprocessing
+2. Exploratory Data Analysis (EDA)
+3. Campaign performance comparison
+4. Channel attribution analysis (First-Touch, Last-Touch, Linear)
+5. ROI calculation
+6. Dashboard development and visualization
+
+## Status
+
+In progress. Datasets are collected and version-controlled in this
+repository. EDA, SQL aggregation, and attribution modeling are complete;
+Power BI dashboard development is ongoing.
 - ROI calculation
 - Data visualization dashboards
 
----
+---Status
+
+In progress. Datasets are collected and version-controlled in this
+repository. EDA, SQL aggregation, and attribution modeling are complete;
+Power BI dashboard development is ongoing.
 ## Status
 Project is currently in progress — dataset has been collected and uploaded to GitHub. Analysis and dashboard development are ongoing.
