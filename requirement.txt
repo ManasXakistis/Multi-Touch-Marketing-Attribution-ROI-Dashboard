@@ -1,0 +1,35 @@
+1. Jupyter Environment
+
+jupyter
+ipykernel
+
+2. Data Manipulation
+
+pandas
+numpy
+
+3. Data Visualization
+
+matplotlib
+seaborn
+plotly
+
+4. Machine Learning & Statistics
+
+scikit-learn
+scipy
+
+5. Dashboard Development
+
+streamlit
+
+6. File Handling
+
+openpyxl
+xlsxwriter
+
+7. Utilities
+
+python-dotenv
+
+

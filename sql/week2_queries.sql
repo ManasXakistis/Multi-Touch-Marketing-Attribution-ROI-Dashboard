@@ -20,7 +20,7 @@ CREATE TABLE ad_campaigns (
 
 SET GLOBAL local_infile = 1;
 
-LOAD DATA LOCAL INFILE 'C:/Users/hemangi/Downloads/global_ads_performance_dataset-selected-columns.csv'
+LOAD DATA LOCAL INFILE 'C:\Users\DELL\OneDrive\Desktop\Multi-Touch-Marketing-Attribution-ROI-Dashboard\Multi-Touch-Marketing-Attribution-ROI-Dashboard\Data\RAW\global_ads_performance_dataset-selected-columns.csv'
 INTO TABLE ad_campaigns
 FIELDS TERMINATED BY ','
 LINES TERMINATED BY '\n'
